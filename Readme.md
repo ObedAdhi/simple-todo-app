@@ -5,7 +5,9 @@
 - Installing needed software
 - Setting up rails on Windows
 - Use postgreSQL as database
-
+- Creating git repository
+- Push initial commit
+- Creating Task model, controller, and migration using scaffold
 
 ## Gems considered to use
 - Devise
@@ -33,3 +35,4 @@
 ## List of used command
 - rails new server --api --database=postgresql
 - rails db:create
+- rails g scaffold Task title:string due_date:date priority:integer status:string description:string
