@@ -1,5 +1,6 @@
 # Simple Todo App
 
+
 ## Day 1 Progress
 - Learning basic Ruby syntax
 - Installing needed software
@@ -8,31 +9,58 @@
 - Creating git repository
 - Push initial commit
 - Creating Task model, controller, and migration using scaffold
+- Create Database
+- Migrate Task
+- Install devise
+- Generate User using devise
+- Migrate User
+
 
 ## Gems considered to use
 - Devise
 - Active-records
 
+
 ## To Do
 
 ### Server
-- creating model
-- how to use association
-- how to setup database
 - how to do validation
 - hashing password (bcrypt)
 - creating access token (JWT)
-- controller for user (register, login)
 - authentication/authorization
-- controller for task (create, read all, sort by date, sort by priority, sort by desc, update, change status, delete)
+- patch task status only (task controller)
+- get all task by user id
+- sort task by due date (task controller)
+- sort task by due priority (task controller)
+- sort task by due description (task controller)
 
 ### Client
 - Initialization (using Vue cli)
 - creating UI (using vanilla Bootstrap)
+- register
+- log in
+- homepage (showing own task list)
+- add task page
+- edit task page
+- sort by *** button / dropdown
 - Wiring server and client
 - Validation alert
+
+
+## Done
+- creating model
+- how to use association
+- how to setup database
+- controller for task (create, read all, sort by date, sort by priority, sort by desc, update, change status, delete) (handled by scafold)
+- controller for user (register, login) (handled by devise)
+
 
 ## List of used command
 - rails new server --api --database=postgresql
 - rails db:create
+- rails db:migrate
 - rails g scaffold Task title:string due_date:date priority:integer status:string description:string
+- rails routes
+- bundle install
+- rails generate devise:install
+- rails generate devise User
