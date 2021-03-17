@@ -28,6 +28,7 @@
 - hashing password (bcrypt)
 - creating access token (JWT)
 - authentication/authorization
+- how to create new route
 - patch task status only (task controller)
 - get all task by user id
 - sort task by due date (task controller)
@@ -64,3 +65,4 @@
 - bundle install
 - rails generate devise:install
 - rails generate devise User
+- rails g migration add_user_id_to_tasks user_id:integer:index
