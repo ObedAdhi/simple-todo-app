@@ -44,6 +44,16 @@ export default {
   name: 'Home',
   components: {
     TaskItem
+  },
+  computed: {
+    allTasks () {
+      return this.$store.state.allTasks
+    }
+  },
+  methods: {
+  },
+  created () {
+    this.$store.dispatch('getAllTasks')
   }
 }
 </script>
