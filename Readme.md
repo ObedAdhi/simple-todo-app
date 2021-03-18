@@ -60,7 +60,8 @@
 - rails new server --api --database=postgresql
 - rails db:create
 - rails db:migrate
-- rails g scaffold Task title:string due_date:date priority:integer status:string description:string
+- rails g scaffold User email:string password_digest:string
+- rails g scaffold Task title:string due_date:date priority:integer status:string description:string user:references
 - rails routes
 - bundle install
 - rails generate devise:install
