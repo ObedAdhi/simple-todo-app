@@ -27,12 +27,13 @@ class UsersController < ApplicationController
   # login
   def login
     @user = User.find_by_email(user_params[:email])
-    if @user.password == user_params[:password]
+    if @user && @user.authenticate(user_params[:password])
       # give_token
       render json: @user
       puts "success login"
     else
-      redirect_to home_url
+      # redirect_to home_url
+      render json: @user.errors, status: :unprocessable_entity
       puts "failed login"
     end
   end

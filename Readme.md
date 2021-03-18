@@ -67,3 +67,7 @@
 - rails generate devise:install
 - rails generate devise User
 - rails g migration add_user_id_to_tasks user_id:integer:index
+
+## API Routes
+- POST /users > register new user
+- GET  /login > login to existing user
