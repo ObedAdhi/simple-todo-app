@@ -15,6 +15,15 @@
 - Generate User using devise
 - Migrate User
 
+## Day 2 Progress
+- Uninstaling devise
+- Removing User model and migration created by devise
+- Generate User model, controller, and migration using scaffold
+- Migrate User
+- Adding bcrypt to user model
+- Adding login function to user controller
+- Initializing vue
+
 
 ## Gems considered to use
 - Devise
@@ -25,7 +34,6 @@
 
 ### Server
 - how to do validation
-- hashing password (bcrypt)
 - creating access token (JWT)
 - authentication/authorization
 - how to create new route
@@ -36,7 +44,6 @@
 - sort task by due description (task controller)
 
 ### Client
-- Initialization (using Vue cli)
 - creating UI (using vanilla Bootstrap)
 - register
 - log in
@@ -49,11 +56,17 @@
 
 
 ## Done
+
+### Server
 - creating model
 - how to use association
 - how to setup database
 - controller for task (create, read all, sort by date, sort by priority, sort by desc, update, change status, delete) (handled by scafold)
-- controller for user (register, login) (handled by devise)
+- controller for user (register, login) (handled by scaffold)
+- hashing password (bcrypt)
+
+### Client
+- Initialization (using Vue cli)
 
 
 ## List of used command
@@ -67,7 +80,10 @@
 - rails generate devise:install
 - rails generate devise User
 - rails g migration add_user_id_to_tasks user_id:integer:index
+- vue create client
 
 ## API Routes
 - POST /users > register new user
 - GET  /login > login to existing user
+- GET  /tasks > get all tasks
+- POST /tasks > create new task
