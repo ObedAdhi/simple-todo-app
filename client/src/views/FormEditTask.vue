@@ -1,9 +1,9 @@
 <template>
   <div class="container mt-5">
     <div class="d-flex justify-content-center">
-      <form @submit.prevent="addProduct" class="form-control p-4" style="width: 350px; height: 560px;">
+      <form @submit.prevent="editProduct(getTask.id)" class="form-control p-4" style="width: 350px; height: 560px;">
 
-        <h2 class="mb-3" style="text-align: center;">Add New Task</h2>
+        <h2 class="mb-3" style="text-align: center;">Edit Task</h2>
         <div class="form-floating mb-3">
           <input v-model="title" type="text" class="form-control" id="floatingInput">
           <label for="floatingInput">Title</label>
@@ -36,7 +36,7 @@
           <label for="floatingInput4">Status</label>
         </div>
 
-        <button class="btn btn-primary col-12 mx-auto mb-2" style="text-align: center;">Add This Task</button>
+        <button class="btn btn-primary col-12 mx-auto mb-2" style="text-align: center;">Update Task</button>
         <button class="btn btn-danger col-12 mx-auto" style="text-align: center;">Cancel</button>
       </form>
 
@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  name: 'FormAddTask',
+  name: 'FormEditTask',
   data () {
     return {
       title: '',
@@ -57,17 +57,29 @@ export default {
     }
   },
   methods: {
-    addProduct () {
+    editProduct (id) {
       const payload = {
+        id,
         title: this.title,
         description: this.description,
         due_date: this.due_date,
         priority: this.priority,
         status: this.status
       }
-      console.log(payload)
-      this.$store.dispatch('createTask', payload)
+      this.$store.dispatch('editTask', payload)
     }
+  },
+  computed: {
+    getTask () {
+      return this.$store.state.selectedTask
+    }
+  },
+  mounted () {
+    this.title = this.getTask.title
+    this.description = this.getTask.description
+    this.due_date = this.getTask.due_date
+    this.priority = this.getTask.priority
+    this.status = this.getTask.status
   }
 }
 </script>

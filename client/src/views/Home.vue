@@ -1,6 +1,6 @@
 <template>
   <div class="home container">
-    <h1>Home Page</h1>
+    <h1>Welcome to simple todo app</h1>
   </div>
 </template>
 

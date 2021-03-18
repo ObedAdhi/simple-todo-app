@@ -9,8 +9,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     allTasks: [],
+    selectedTask: {},
     loginPage: 'login',
-    loginStatus: ''
+    loginStatus: '',
+    currentUser: {}
   },
   mutations: {
     changeLoginPage (state, payload) {
@@ -21,6 +23,12 @@ export default new Vuex.Store({
     },
     insertAllTasks (state, payload) {
       state.allTasks = payload
+    },
+    changeCurrentUser (state, payload) {
+      state.currentUser = payload
+    },
+    saveOneTask (state, payload) {
+      state.selectedTask = payload
     }
   },
   actions: {
@@ -44,6 +52,7 @@ export default new Vuex.Store({
             icon: 'success',
             title: 'Login Success'
           })
+          this.commit('changeCurrentUser', data.data)
           this.commit('changeLoginStatus', 'true')
           this.dispatch('getAllTasks')
           router.push('/')
@@ -75,6 +84,7 @@ export default new Vuex.Store({
             icon: 'success',
             title: 'Register Success'
           })
+          this.commit('changeCurrentUser', data.data)
           this.commit('changeLoginStatus', 'true')
           this.dispatch('getAllTasks')
           router.push('/')
@@ -91,6 +101,90 @@ export default new Vuex.Store({
         .get('/tasks')
         .then(({ data }) => {
           context.commit('insertAllTasks', data)
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error'
+          })
+        })
+    },
+    createTask (context, payload) {
+      const user_id = this.state.currentUser.id
+      const { title, description, due_date, priority, status } = payload // eslint-disable-line no-console
+      axios({
+        method: 'POST',
+        url: '/tasks',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          title, description, due_date, priority, status, user_id
+        }
+      })
+        .then(data => {
+          console.log(data.data)
+          router.push('/my-tasks')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    editTask (context, payload) {
+      const user_id = this.state.currentUser.id
+      const { id, title, description, due_date, priority, status } = payload
+      axios({
+        method: 'PUT',
+        url: `/tasks/${id}`,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          title, description, due_date, priority, status, user_id
+        }
+      })
+        .then(data => {
+          console.log(data.data)
+          router.push('/my-tasks')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    deleteTask (context, id) {
+      axios({
+        method: 'DELETE',
+        url: `/tasks/${id}`
+      })
+        .then(({ data }) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Order Deleted'
+          })
+          this.dispatch('getAllTasks')
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error'
+          })
+        })
+    },
+    changeStatus (context, payload) {
+      const { status, id } = payload
+      axios({
+        method: 'PUT',
+        url: `/tasks/change-status/${id}`,
+        data: {
+          status
+        }
+      })
+        .then(({ data }) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Status updated'
+          })
+          this.dispatch('getAllTasks')
         })
         .catch(err => {
           console.log(err)

@@ -5,9 +5,9 @@
       <td>{{ task.due_date }}</td>
       <td>{{ priorityText(task.priority) }}</td>
       <td>{{ task.status }}</td>
-      <td style="width: 140px" class="m-0 p-1"><button class="btn-primary">Change Status</button></td>
-      <td style="width: 50px" class="m-0 p-1"><button class="btn-primary">Edit</button></td>
-      <td style="width: 50px" class="m-0 p-1"><button class="btn-danger">Delete</button></td>
+      <td @click.prevent="changeThisTaskStatus(task.status, task.id)" style="width: 140px" class="m-0 p-1"><button class="btn-primary">Change Status</button></td>
+      <td @click.prevent="editOneTask(task)" style="width: 50px" class="m-0 p-1"><button class="btn-primary">Edit</button></td>
+      <td @click.prevent="deleteOneTask(task.id)" style="width: 50px" class="m-0 p-1"><button class="btn-danger">Delete</button></td>
     </tr>
 </template>
 
@@ -27,6 +27,23 @@ export default {
         default:
           return 'wrong value'
       }
+    },
+    changeThisTaskStatus (currentStatus, id) {
+      let status
+      if (currentStatus === 'Done') {
+        status = 'Pending'
+      } else {
+        status = 'Done'
+      }
+      const payload = { status, id }
+      this.$store.dispatch('changeStatus', payload)
+    },
+    editOneTask (task) {
+      this.$store.commit('saveOneTask', task)
+      this.$router.push('edit')
+    },
+    deleteOneTask (id) {
+      this.$store.dispatch('deleteTask', id)
     }
   }
 }

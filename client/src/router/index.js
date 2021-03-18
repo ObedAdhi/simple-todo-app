@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import FormAddTask from '../views/FormAddTask.vue'
+import FormEditTask from '../views/FormEditTask.vue'
 import MyTasks from '../views/MyTasks.vue'
 // import Swal from 'sweetalert2'
 
@@ -22,6 +23,11 @@ const routes = [
     path: '/add',
     name: 'FormAddTask',
     component: FormAddTask
+  },
+  {
+    path: '/edit',
+    name: 'FormEditTask',
+    component: FormEditTask
   },
   {
     path: '/login',

@@ -19,10 +19,10 @@
       </div>
     </div>
     <hr>
-    <table class="table mt-5">
+    <table class="table-bordered mt-5">
       <thead>
         <tr>
-          <th style="width: 200px" scope="col">Title</th>
+          <th scope="col">Title</th>
           <th scope="col">Description</th>
           <th style="width: 110px" scope="col">Due Date</th>
           <th style="width: 110px" scope="col">Priority</th>
