@@ -13,6 +13,20 @@
 - $ npm install
 - $ npm run serve
 
+## API Routes
+|Command|Route|Function|
+|---|---|---|
+|POST   |  /users     |register new user| 
+|POST   |  /login     |login to existing user|
+|GET    |  /tasks     |get all tasks|
+|POST   |  /tasks     |create new task|
+|PUT    |  /tasks/:id |edit task detail|
+|PATCH  |  /tasks/:id |change task status|
+|DELETE |  /tasks/:id |delete task|
+|GET    |  /tasks-by-duedate      |get all tasks and sort by earliest day|
+|GET    |  /tasks-by-priority     |get all tasks and sort by highest priority|
+|GET    |  /tasks-by-description  |get all tasks and sort description from a to z|
+
 ## Day 1 Progress
 - Learning basic Ruby syntax
 - Installing needed software
@@ -97,18 +111,4 @@
 - rails generate devise User
 - rails g migration add_user_id_to_tasks user_id:integer:index
 - vue create client
-
-## API Routes
-|Command|Route|Function|
-|---|---|---|
-|POST   |  /users     |register new user| 
-|POST   |  /login     |login to existing user|
-|GET    |  /tasks     |get all tasks|
-|POST   |  /tasks     |create new task|
-|PUT    |  /tasks/:id |edit task detail|
-|PATCH  |  /tasks/:id |change task status|
-|DELETE |  /tasks/:id |delete task|
-|GET    |  /tasks-by-duedate      |get all tasks and sort by earliest day|
-|GET    |  /tasks-by-priority     |get all tasks and sort by highest priority|
-|GET    |  /tasks-by-description  |get all tasks and sort description from a to z|
 
