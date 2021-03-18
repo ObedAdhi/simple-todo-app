@@ -23,6 +23,7 @@
 - Adding bcrypt to user model
 - Adding login function to user controller
 - Initializing vue
+- Wiring login and register
 
 
 ## Gems considered to use
@@ -36,7 +37,6 @@
 - how to do validation
 - creating access token (JWT)
 - authentication/authorization
-- how to create new route
 - patch task status only (task controller)
 - get all task by user id
 - sort task by due date (task controller)
@@ -45,8 +45,6 @@
 
 ### Client
 - creating UI (using vanilla Bootstrap)
-- register
-- log in
 - homepage (showing own task list)
 - add task page
 - edit task page
@@ -64,9 +62,12 @@
 - controller for task (create, read all, sort by date, sort by priority, sort by desc, update, change status, delete) (handled by scafold)
 - controller for user (register, login) (handled by scaffold)
 - hashing password (bcrypt)
+- how to create new route
 
 ### Client
 - Initialization (using Vue cli)
+- register
+- log in
 
 
 ## List of used command

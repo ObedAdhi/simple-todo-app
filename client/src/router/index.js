@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import FormAddTask from '../views/FormAddTask.vue'
+import MyTasks from '../views/MyTasks.vue'
+// import Swal from 'sweetalert2'
 
 Vue.use(VueRouter)
 
@@ -10,6 +12,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/my-tasks',
+    name: 'MyTasks',
+    component: MyTasks
   },
   {
     path: '/add',
@@ -31,5 +38,19 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+// router.beforeEach((to, from, next) => {
+//   if (to.name === 'MyTasks' && !localStorage.getItem('access_token')) {
+//     Swal.fire({
+//       icon: 'error',
+//       title: 'Login or Register to continue'
+//     })
+//     next({ name: 'Login' })
+//   } else if (to.name === 'Login' && localStorage.getItem('access_token')) {
+//     next({ name: 'Home' })
+//   } else {
+//     next()
+//   }
+// })
 
 export default router
