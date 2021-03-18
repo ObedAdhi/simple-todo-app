@@ -8,6 +8,27 @@ class TasksController < ApplicationController
     render json: @tasks
   end
 
+  # Get /tasks/by-duedate
+  def index_by_due_date
+    @tasks = Task.all.order(due_date: :asc)
+
+    render json: @tasks
+  end
+
+  # Get /tasks/by-priority
+  def index_by_priority
+    @tasks = Task.all.order(priority: :desc)
+
+    render json: @tasks
+  end
+
+  # Get /tasks/by-description
+  def index_by_description
+    @tasks = Task.all.order(description: :asc)
+
+    render json: @tasks
+  end
+
   # GET /tasks/1
   def show
     render json: @task

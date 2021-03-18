@@ -1,5 +1,17 @@
 # Simple Todo App
 
+## Note
+### Starting server
+- $ cd server
+- $ bundle install
+- $ rails db:create
+- $ rails db:migrate
+- $ rails s
+
+### Starting client
+- $ cd client (from root directory)
+- $ npm install
+- $ npm run serve
 
 ## Day 1 Progress
 - Learning basic Ruby syntax
@@ -24,7 +36,9 @@
 - Adding login function to user controller
 - Initializing vue
 - Wiring login and register
-
+- Wiring CRUD client-server
+- Change task status only 
+- Add tasks sorting function
 
 ## Gems considered to use
 - Devise
@@ -37,19 +51,11 @@
 - how to do validation
 - creating access token (JWT)
 - authentication/authorization
-- patch task status only (task controller)
-- get all task by user id
-- sort task by due date (task controller)
-- sort task by due priority (task controller)
-- sort task by due description (task controller)
+- alert due date task
 
 ### Client
-- creating UI (using vanilla Bootstrap)
-- homepage (showing own task list)
-- add task page
-- edit task page
-- sort by *** button / dropdown
-- Wiring server and client
+- creating UI (using vanilla Bootstrap) ongoing
+- Wiring server and client ongoing
 - Validation alert
 
 
@@ -63,11 +69,20 @@
 - controller for user (register, login) (handled by scaffold)
 - hashing password (bcrypt)
 - how to create new route
+- patch task status only (task controller)
+- get all task by user id
+- sort task by due date (task controller)
+- sort task by due priority (task controller)
+- sort task by due description (task controller)
 
 ### Client
 - Initialization (using Vue cli)
 - register
 - log in
+- homepage (showing own task list)
+- add task page
+- edit task page
+- sort by *** button / dropdown
 
 
 ## List of used command
@@ -84,7 +99,16 @@
 - vue create client
 
 ## API Routes
-- POST /users > register new user
-- GET  /login > login to existing user
-- GET  /tasks > get all tasks
-- POST /tasks > create new task
+|Command|Route|Function|
+|---|---|---|
+|POST   |  /users     |register new user| 
+|POST   |  /login     |login to existing user|
+|GET    |  /tasks     |get all tasks|
+|POST   |  /tasks     |create new task|
+|PUT    |  /tasks/:id |edit task detail|
+|PATCH  |  /tasks/:id |change task status|
+|DELETE |  /tasks/:id |delete task|
+|GET    |  /tasks-by-duedate      |get all tasks and sort by earliest day|
+|GET    |  /tasks-by-priority     |get all tasks and sort by highest priority|
+|GET    |  /tasks-by-description  |get all tasks and sort description from a to z|
+

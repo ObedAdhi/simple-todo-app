@@ -11,9 +11,9 @@
             Sort-by
           </button>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-            <li><a class="dropdown-item" href="#">Due date</a></li>
-            <li><a class="dropdown-item" href="#">Priority</a></li>
-            <li><a class="dropdown-item" href="#">Description</a></li>
+            <li><a class="dropdown-item" @click.prevent="sortByDueDate">Due date</a></li>
+            <li><a class="dropdown-item" @click.prevent="sortByPriority">Priority</a></li>
+            <li><a class="dropdown-item" @click.prevent="sortByDescription">Description</a></li>
           </ul>
         </div>
       </div>
@@ -58,6 +58,15 @@ export default {
   methods: {
     toAddForm () {
       this.$router.push('add')
+    },
+    sortByDueDate () {
+      this.$store.dispatch('getAllTasksByDueDate')
+    },
+    sortByPriority () {
+      this.$store.dispatch('getAllTasksByPriority')
+    },
+    sortByDescription () {
+      this.$store.dispatch('getAllTasksByDescription')
     }
   },
   created () {

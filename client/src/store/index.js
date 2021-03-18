@@ -173,8 +173,8 @@ export default new Vuex.Store({
     changeStatus (context, payload) {
       const { status, id } = payload
       axios({
-        method: 'PUT',
-        url: `/tasks/change-status/${id}`,
+        method: 'PATCH',
+        url: `/tasks/${id}`,
         data: {
           status
         }
@@ -185,6 +185,46 @@ export default new Vuex.Store({
             title: 'Status updated'
           })
           this.dispatch('getAllTasks')
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error'
+          })
+        })
+    },
+
+    getAllTasksByDueDate (context) {
+      axios
+        .get('/tasks-by-duedate')
+        .then(({ data }) => {
+          context.commit('insertAllTasks', data)
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error'
+          })
+        })
+    },
+    getAllTasksByPriority (context) {
+      axios
+        .get('/tasks-by-priority')
+        .then(({ data }) => {
+          context.commit('insertAllTasks', data)
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error'
+          })
+        })
+    },
+    getAllTasksByDescription (context) {
+      axios
+        .get('/tasks-by-description')
+        .then(({ data }) => {
+          context.commit('insertAllTasks', data)
         })
         .catch(err => {
           console.log(err)
