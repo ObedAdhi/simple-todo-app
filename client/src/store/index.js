@@ -254,6 +254,28 @@ export default new Vuex.Store({
             icon: 'error'
           })
         })
+    },
+
+    filterByPriority (context, payload) {
+      console.log(payload)
+      axios({
+        method: 'GET',
+        url: `/filter-by-priority/${payload}`,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(data => {
+          console.log(data.data)
+          Swal.fire({
+            icon: 'success',
+            title: 'Filtered'
+          })
+          context.commit('insertAllTasks', data.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 })

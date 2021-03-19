@@ -16,6 +16,16 @@
             <li><a class="dropdown-item" @click.prevent="sortByDescription">Description</a></li>
           </ul>
         </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            Filter by priority
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+            <li><a class="dropdown-item" @click.prevent="filterPriority(3)">High</a></li>
+            <li><a class="dropdown-item" @click.prevent="filterPriority(2)">Normal</a></li>
+            <li><a class="dropdown-item" @click.prevent="filterPriority(1)">Low</a></li>
+          </ul>
+        </div>
       </div>
     </div>
     <hr>
@@ -67,7 +77,11 @@ export default {
     },
     sortByDescription () {
       this.$store.dispatch('getAllTasksByDescription')
+    },
+    filterPriority (priority) {
+      this.$store.dispatch('filterByPriority', priority)
     }
+
   },
   created () {
     this.$store.dispatch('getAllTasks')

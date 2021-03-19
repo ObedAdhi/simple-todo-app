@@ -23,6 +23,13 @@ class TasksController < ApplicationController
   end
 
   # Get /tasks/by-description
+  def filter_by_priority
+    @tasks = Task.all.where(:priority => [params[:priority]])
+
+    render json: @tasks
+  end
+
+  # Get /tasks/by-description
   def index_by_description
     @tasks = Task.all.order(description: :asc)
 
