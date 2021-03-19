@@ -65,7 +65,6 @@ export default {
         priority: this.priority,
         status: this.status
       }
-      console.log(payload)
       this.$store.dispatch('createTask', payload)
     }
   }

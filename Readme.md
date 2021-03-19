@@ -54,6 +54,10 @@
 - Change task status only 
 - Add tasks sorting function
 
+## Day 3 Progress
+- Add navbar
+- Add navigation guard
+
 ## Gems considered to use
 - Devise
 - Active-records
@@ -68,8 +72,6 @@
 - alert due date task
 
 ### Client
-- creating UI (using vanilla Bootstrap) ongoing
-- Wiring server and client ongoing
 - Validation alert
 
 
@@ -97,6 +99,8 @@
 - add task page
 - edit task page
 - sort by *** button / dropdown
+- creating UI (using vanilla Bootstrap) ongoing
+- Wiring server and client ongoing
 
 
 ## List of used command

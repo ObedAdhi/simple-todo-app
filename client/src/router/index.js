@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import FormAddTask from '../views/FormAddTask.vue'
 import FormEditTask from '../views/FormEditTask.vue'
 import MyTasks from '../views/MyTasks.vue'
-// import Swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 
 Vue.use(VueRouter)
 
@@ -45,18 +45,32 @@ const router = new VueRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   if (to.name === 'MyTasks' && !localStorage.getItem('access_token')) {
-//     Swal.fire({
-//       icon: 'error',
-//       title: 'Login or Register to continue'
-//     })
-//     next({ name: 'Login' })
-//   } else if (to.name === 'Login' && localStorage.getItem('access_token')) {
-//     next({ name: 'Home' })
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  if (to.name === 'MyTasks' && !localStorage.getItem('access_token')) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Login or Register to continue'
+    })
+    next({ name: 'Login' })
+  } else if (to.name === 'FormAddTask' && !localStorage.getItem('access_token')) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Login or Register to continue'
+    })
+    next({ name: 'Login' })
+  } else if (to.name === 'FormEditTask' && !localStorage.getItem('access_token')) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Login or Register to continue'
+    })
+    next({ name: 'Login' })
+  } else if (to.name === 'Login' && localStorage.getItem('access_token')) {
+    next({ name: 'MyTasks' })
+  } else if (to.name === 'Home' && localStorage.getItem('access_token')) {
+    next({ name: 'MyTasks' })
+  } else {
+    next()
+  }
+})
 
 export default router

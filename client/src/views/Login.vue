@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-3">
+  <div class="container mt-4">
     <button @click.prevent="toLogin" class="btn btn-dark">Login</button> |
     <button @click.prevent="toRegister" class="btn btn-dark">Register</button>
     <div class="d-flex justify-content-center mt-3">

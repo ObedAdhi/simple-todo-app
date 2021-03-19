@@ -1,6 +1,9 @@
 <template>
-  <div class="home container">
+  <div class="home container mt-5">
     <h1>Welcome to simple todo app</h1>
+    <br>
+    <p>You can list all your task in this simple web app</p>
+    <p>Please Login or Register to start</p>
   </div>
 </template>
 
@@ -15,8 +18,6 @@ export default {
     allTasks () {
       return this.$store.state.allTasks
     }
-  },
-  methods: {
   },
   created () {
     this.$store.dispatch('getAllTasks')

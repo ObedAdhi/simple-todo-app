@@ -47,7 +47,8 @@ export default new Vuex.Store({
         }
       })
         .then(data => {
-          // localStorage.setItem('access_token', data.data.access_token)
+          localStorage.setItem('access_token', 'access')
+          // data.data.access_token
           Swal.fire({
             icon: 'success',
             title: 'Login Success'
@@ -55,12 +56,13 @@ export default new Vuex.Store({
           this.commit('changeCurrentUser', data.data)
           this.commit('changeLoginStatus', 'true')
           this.dispatch('getAllTasks')
-          router.push('/')
+          router.push('/my-tasks')
         })
         .catch(err => {
           console.log(err)
           Swal.fire({
-            icon: 'error'
+            icon: 'error',
+            title: 'error'
           })
         })
     },
@@ -79,6 +81,7 @@ export default new Vuex.Store({
         }
       })
         .then(data => {
+          localStorage.setItem('access_token', 'access')
           // localStorage.setItem('access_token', data.data.access_token)
           Swal.fire({
             icon: 'success',
@@ -87,7 +90,7 @@ export default new Vuex.Store({
           this.commit('changeCurrentUser', data.data)
           this.commit('changeLoginStatus', 'true')
           this.dispatch('getAllTasks')
-          router.push('/')
+          router.push('/my-tasks')
         })
         .catch(err => {
           console.log(err)
@@ -123,7 +126,10 @@ export default new Vuex.Store({
         }
       })
         .then(data => {
-          console.log(data.data)
+          Swal.fire({
+            icon: 'success',
+            title: 'Task Created'
+          })
           router.push('/my-tasks')
         })
         .catch(err => {
@@ -145,6 +151,10 @@ export default new Vuex.Store({
       })
         .then(data => {
           console.log(data.data)
+          Swal.fire({
+            icon: 'success',
+            title: 'Task updated'
+          })
           router.push('/my-tasks')
         })
         .catch(err => {
@@ -159,7 +169,7 @@ export default new Vuex.Store({
         .then(({ data }) => {
           Swal.fire({
             icon: 'success',
-            title: 'Order Deleted'
+            title: 'Task Deleted'
           })
           this.dispatch('getAllTasks')
         })
@@ -198,6 +208,10 @@ export default new Vuex.Store({
       axios
         .get('/tasks-by-duedate')
         .then(({ data }) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Sorted by Due dates'
+          })
           context.commit('insertAllTasks', data)
         })
         .catch(err => {
@@ -211,6 +225,10 @@ export default new Vuex.Store({
       axios
         .get('/tasks-by-priority')
         .then(({ data }) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Sorted by Priority'
+          })
           context.commit('insertAllTasks', data)
         })
         .catch(err => {
@@ -224,6 +242,10 @@ export default new Vuex.Store({
       axios
         .get('/tasks-by-description')
         .then(({ data }) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Sorted by Desription'
+          })
           context.commit('insertAllTasks', data)
         })
         .catch(err => {
